@@ -35,40 +35,40 @@ let testTarget = Target.target(
 
 // MARK: - Modules
 let productFeatureModule = Target.target(
-   name: "ProductFeature",
-   destinations: .iOS,
-   product: .framework, // App에서 사용할 것이므로 framework
-   bundleId: "\(bundleId).ProductFeature",
-   infoPlist: .default,
-   sources: ["Modules/ProductFeature/Sources/**"],
-   dependencies: [
+  name: "ProductFeature",
+  destinations: .iOS,
+  product: .framework, // App에서 사용할 것이므로 framework
+  bundleId: "\(bundleId).ProductFeature",
+  infoPlist: .default,
+  sources: ["Modules/ProductFeature/Sources/**"],
+  dependencies: [
      .target(name: "Network") // Network 모듈의 APIService, Product 모델 사용
-   ]
- )
+  ]
+)
 
 let networkModule = Target.target(
-   name: "Network",
-   destinations: .iOS,
-   product: .framework, // 다른 모듈에서 사용할 것이므로 framework로 설정
-   bundleId: "\(bundleId).Network",
-   infoPlist: .default,
-   sources: ["Modules/Network/Sources/**"],
-   dependencies: [
-     .package(product: "Alamofire"),
-   ]
- )
+  name: "Network",
+  destinations: .iOS,
+  product: .framework, // 다른 모듈에서 사용할 것이므로 framework로 설정
+  bundleId: "\(bundleId).Network",
+  infoPlist: .default,
+  sources: ["Modules/Network/Sources/**"],
+  dependencies: [
+  .external(name: "Alamofire"),
+  ]
+)
 
 let networkTests = Target.target(
-   name: "NetworkTests",
-   destinations: .iOS,
-   product: .unitTests,
-   bundleId: "\(bundleId).NetworkTests",
-   infoPlist: .default,
-   sources: ["Modules/Network/Tests/**"],
-   dependencies: [
-     .target(name: "Network") // Network 모듈 테스트
-   ]
- )
+  name: "NetworkTests",
+  destinations: .iOS,
+  product: .unitTests,
+  bundleId: "\(bundleId).NetworkTests",
+  infoPlist: .default,
+  sources: ["Modules/Network/Tests/**"],
+  dependencies: [
+    .target(name: "Network") // Network 모듈 테스트
+  ]
+)
 
 let project = Project(
     name: "HelloTuist",
