@@ -6,6 +6,7 @@ public enum NetworkError: Error {
 case invalidURL
 case requestFailed(Error)
 case decodingFailed(Error)
+case serverError(statusCode:Int)
 case unknown
 }
 
@@ -14,7 +15,7 @@ public class APIService {
 public static let shared = APIService() // 싱글톤 인스턴스
 private let baseURL = "https://fakestoreapi.com"
 
-private init() {} // 외부 생성 방지
+init() {}
 
 // 상품 목록 가져오기 (async/await 사용)
 @MainActor
