@@ -4,6 +4,7 @@
 //
 //  Created by NoelMacMini on 4/22/25.
 //
+
 import UIKit
 import SnapKit
 
@@ -23,7 +24,7 @@ class LoginViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth = 2
         textField.layer.borderColor = UIColor.systemGray3.cgColor
-        textField.layer.cornerRadius = 8
+        textField.layer.cornerRadius = 5
         textField.keyboardType = .emailAddress
         // 자동 대문자 비활성화
         textField.autocapitalizationType = .none
@@ -38,7 +39,7 @@ class LoginViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.layer.borderWidth = 2
         textField.layer.borderColor = UIColor.systemGray3.cgColor
-        textField.layer.cornerRadius = 8
+        textField.layer.cornerRadius = 5
         textField.isSecureTextEntry = true
         return textField
     }()
