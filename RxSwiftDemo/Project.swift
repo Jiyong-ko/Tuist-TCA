@@ -18,7 +18,9 @@ let project = Project(
             ),
             sources: ["RxSwiftDemo/Sources/**"],
             resources: ["RxSwiftDemo/Resources/**"],
-            dependencies: []
+            dependencies: [
+                .external(name: "RxSwift")
+            ]
         ),
         .target(
             name: "RxSwiftDemoTests",
