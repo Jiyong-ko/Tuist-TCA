@@ -5,7 +5,7 @@ import ComposableArchitecture
 struct TCADemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(
+            CounterView(
                 store: Store(initialState: CounterFeature.State()) {
                     CounterFeature()
                         .dependency(\.numberFact, .liveValue) // Preview용 의존성 주입
