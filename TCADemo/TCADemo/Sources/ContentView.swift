@@ -2,58 +2,58 @@ import SwiftUI
 import ComposableArchitecture
 
 public struct ContentView: View {
-    // StoreOf는 특정 Feature의 Store임을 명시
     let store: StoreOf<CounterFeature>
     
     public var body: some View {
         VStack {
-            Text("Count: \(store.count)") // State 직접 접근 (ObservableState 덕분)
+            Text("\(store.count)")
                 .font(.largeTitle)
                 .padding()
-            
+                .background(Color.black.opacity(0.1))
+                .cornerRadius(10)
             HStack {
                 Button("-") {
-                    store.send(.decrementButtonTapped) // Action 전송
+                    store.send(.decrementButtonTapped)
                 }
                 .font(.largeTitle)
                 .padding()
+                .background(Color.black.opacity(0.1))
+                .cornerRadius(10)
                 
                 Button("+") {
-                    store.send(.incrementButtonTapped) // Action 전송
+                    store.send(.incrementButtonTapped)
                 }
                 .font(.largeTitle)
                 .padding()
+                .background(Color.black.opacity(0.1))
+                .cornerRadius(10)
             }
             
-            // 예시: 로딩 및 결과 표시
-            if store.isLoading {
-                ProgressView()
-                    .padding()
+            Button("Fact") {
+                //        store.send(.factButtonTapped)
             }
-            
-            if let fact = store.fact {
-                Text(fact)
-                    .padding()
-                    .multilineTextAlignment(.center)
-            }
-            
-            Button("Get Number Fact") {
-                store.send(.factButtonTapped)
-            }
+            .font(.largeTitle)
             .padding()
+            .background(Color.black.opacity(0.1))
+            .cornerRadius(10)
+            
+            if true /*store.isLoading*/ {
+                ProgressView()
+            } else /*if let fact = store.fact*/ {
+                //        Text(fact)
+                //          .font(.largeTitle)
+                //          .multilineTextAlignment(.center)
+                //          .padding()
+            }
+            
         }
-        .navigationTitle("Counter") // 필요시 네비게이션 타이틀 설정
     }
 }
-
 
 #Preview {
     ContentView(
         store: Store(initialState: CounterFeature.State()) {
             CounterFeature()
-            // Preview용 의존성 주입 (예: testValue 사용)
-                .dependency(\.numberFact, .previewValue)
-                ._printChanges() // 상태 변화 로그 출력 (디버깅용)
         }
     )
 }
