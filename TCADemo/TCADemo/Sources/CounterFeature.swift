@@ -36,12 +36,12 @@ struct CounterFeature {
             case.incrementButtonTapped:
                 state.count += 1
                 state.fact = nil // 카운트 변경 시 이전 fact 제거
-                return.none // 이 액션은 부수 효과 없음
+                return Effect.none // 이 액션은 부수 효과 없음  (Effect.none = .none)
                 
             case.decrementButtonTapped:
                 state.count -= 1
                 state.fact = nil // 카운트 변경 시 이전 fact 제거
-                return.none // 이 액션은 부수 효과 없음
+                return .none // 이 액션은 부수 효과 없음
                 
             case.factButtonTapped:
                 state.isLoading = true
@@ -61,12 +61,12 @@ struct CounterFeature {
             case let.factResponse(.success(fact)):
                 state.isLoading = false
                 state.fact = fact
-                return.none
+                return .none
                 
             case.factResponse(.failure):
                 state.isLoading = false
                 // 에러 상태 처리 (예: 사용자에게 알림 표시)
-                return.none
+                return .none
             }
         }
     }
