@@ -18,7 +18,7 @@ let project = Project(
             ),
             sources: ["TCADemo/Sources/**"],
             resources: ["TCADemo/Resources/**"],
-            dependencies: []
+            dependencies: [.external(name: "ComposableArchitecture"),]
         ),
         .target(
             name: "TCADemoTests",
