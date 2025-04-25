@@ -21,7 +21,9 @@ let project = Project(
             ),
             sources: ["StoreApp/Sources/**"],
             resources: ["StoreApp/Resources/**"],
-            dependencies: []
+            dependencies: [
+                .external(name: "ComposableArchitecture"),
+            ]
         ),
         .target(
             name: "StoreAppTests",
